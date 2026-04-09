@@ -9,10 +9,10 @@
   --text: #ffffff;
   --text-dim: #999999;
   --text-muted: #666666;
-  --accent: #e51c1c;
-  --accent-hover: #ff3333;
-  --accent-dark: #c90202;
-  --accent-glow: rgba(229, 28, 28, 0.3);
+  --accent: #2e7d32;
+  --accent-hover: #43a047;
+  --accent-dark: #1b5e20;
+  --accent-glow: rgba(46, 125, 50, 0.3);
   --gold: #d4a853;
   --green: #2ecc71;
   --border: #222222;
@@ -221,7 +221,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-text { max-width: 600px; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(229, 28, 28, 0.1); border: 1px solid rgba(229, 28, 28, 0.3);
+  background: rgba(46, 125, 50, 0.1); border: 1px solid rgba(46, 125, 50, 0.3);
   padding: 6px 16px; border-radius: 50px; font-size: 12px;
   text-transform: uppercase; letter-spacing: 2px; font-weight: 600;
   color: var(--accent); margin-bottom: 24px;
@@ -265,7 +265,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .btn-primary:hover {
   background: var(--accent-hover);
-  box-shadow: 0 6px 30px rgba(229, 28, 28, 0.5);
+  box-shadow: 0 6px 30px rgba(46, 125, 50, 0.5);
   transform: translateY(-2px);
 }
 .btn-outline {
@@ -310,7 +310,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .category-icon {
   width: 60px; height: 60px; margin: 0 auto 16px;
-  background: rgba(229, 28, 28, 0.1); border-radius: 50%;
+  background: rgba(46, 125, 50, 0.1); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 24px; color: var(--accent);
   transition: all var(--transition);
@@ -336,7 +336,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
 }
 .product-card:hover {
-  border-color: rgba(229, 28, 28, 0.3);
+  border-color: rgba(46, 125, 50, 0.3);
   transform: translateY(-6px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
@@ -433,7 +433,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .detail-compare { font-size: 20px; color: var(--text-muted); text-decoration: line-through; }
 .detail-save {
-  background: rgba(229, 28, 28, 0.1); color: var(--accent);
+  background: rgba(46, 125, 50, 0.1); color: var(--accent);
   padding: 4px 12px; border-radius: 50px; font-size: 14px; font-weight: 600;
 }
 .detail-desc {
@@ -495,7 +495,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .shop-hero {
   padding: 140px 32px 60px;
   text-align: center; position: relative;
-  background: linear-gradient(180deg, rgba(229,28,28,0.05) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(46,125,50,0.05) 0%, transparent 100%);
 }
 .shop-hero h1 { font-family: var(--font-heading); font-size: 48px; font-weight: 900; margin-bottom: 8px; }
 .shop-hero p { color: var(--text-dim); font-size: 17px; }
@@ -539,7 +539,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 1px solid var(--border); border-radius: var(--radius);
   margin-bottom: 12px; transition: all var(--transition);
 }
-.cart-item:hover { border-color: rgba(229,28,28,0.2); }
+.cart-item:hover { border-color: rgba(46,125,50,0.2); }
 .cart-item-img {
   width: 80px; height: 80px; border-radius: var(--radius-sm);
   background: var(--bg-elevated); overflow: hidden;
@@ -647,7 +647,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .banner-inner {
   background: linear-gradient(135deg, #1a0505 0%, #0a0a0a 50%, #1a0505 100%);
-  border: 1px solid rgba(229, 28, 28, 0.2); border-radius: 20px;
+  border: 1px solid rgba(46, 125, 50, 0.2); border-radius: 20px;
   padding: 80px 60px;
   display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
   align-items: center; position: relative; overflow: hidden;
@@ -793,7 +793,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 28px;
   margin: 48px 0 16px;
   padding-bottom: 12px;
-  border-bottom: 2px solid var(--accent, #e51c1c);
+  border-bottom: 2px solid var(--accent, #2e7d32);
 }
 .seo-content h1:first-child, .seo-content h2:first-child { margin-top: 0; }
 .seo-content h3 {
@@ -807,7 +807,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin: 24px 0 8px;
 }
 .seo-content p { margin: 0 0 16px; }
-.seo-content a { color: var(--accent, #e51c1c); text-decoration: underline; }
+.seo-content a { color: var(--accent, #2e7d32); text-decoration: underline; }
 .seo-content a:hover { color: #ff4444; }
 .seo-content ul, .seo-content ol {
   margin: 0 0 16px 24px;
@@ -817,10 +817,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .seo-content strong { color: #fff; }
 .seo-content em { color: #aaa; }
 .seo-content blockquote {
-  border-left: 3px solid var(--accent, #e51c1c);
+  border-left: 3px solid var(--accent, #2e7d32);
   padding: 12px 20px;
   margin: 16px 0;
-  background: rgba(229,28,28,0.05);
+  background: rgba(46,125,50,0.05);
   border-radius: 0 8px 8px 0;
 }
 .seo-content table {
@@ -862,18 +862,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .blog-card:hover {
   transform: translateY(-4px);
-  border-color: var(--accent, #e51c1c);
+  border-color: var(--accent, #2e7d32);
 }
 .blog-icon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: rgba(229,28,28,0.1);
+  background: rgba(46,125,50,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
-  color: var(--accent, #e51c1c);
+  color: var(--accent, #2e7d32);
   margin-bottom: 16px;
 }
 .blog-card h3 {
@@ -888,7 +888,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 16px;
 }
 .blog-link {
-  color: var(--accent, #e51c1c);
+  color: var(--accent, #2e7d32);
   font-size: 14px;
   font-weight: 600;
 }

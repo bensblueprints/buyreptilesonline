@@ -10,7 +10,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #0f0f0f; --sidebar: #161616; --card: #1a1a1a; --input: #222;
-      --border: #2a2a2a; --accent: #e51c1c; --accent-hover: #ff3333;
+      --border: #2a2a2a; --accent: #2e7d32; --accent-hover: #43a047;
       --text: #fff; --dim: #999; --muted: #666;
       --green: #2ecc71; --yellow: #f1c40f; --blue: #3498db;
     }
@@ -57,7 +57,7 @@
       padding: 12px 24px; font-size: 14px; font-weight: 500;
       color: var(--dim); transition: all 0.2s;
     }
-    .sidebar-nav a:hover, .sidebar-nav a.active { color: white; background: rgba(229,28,28,0.1); }
+    .sidebar-nav a:hover, .sidebar-nav a.active { color: white; background: rgba(46,125,50,0.1); }
     .sidebar-nav a.active { border-right: 3px solid var(--accent); }
     .sidebar-nav a i { width: 20px; text-align: center; }
 
@@ -75,7 +75,7 @@
       width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
       font-size: 18px; margin-bottom: 16px;
     }
-    .stat-card .stat-icon.red { background: rgba(229,28,28,0.15); color: var(--accent); }
+    .stat-card .stat-icon.red { background: rgba(46,125,50,0.15); color: var(--accent); }
     .stat-card .stat-icon.green { background: rgba(46,204,113,0.15); color: var(--green); }
     .stat-card .stat-icon.blue { background: rgba(52,152,219,0.15); color: var(--blue); }
     .stat-card .stat-icon.yellow { background: rgba(241,196,15,0.15); color: var(--yellow); }
@@ -99,7 +99,7 @@
     .status-processing { background: rgba(52,152,219,0.15); color: var(--blue); }
     .status-shipped { background: rgba(46,204,113,0.15); color: var(--green); }
     .status-delivered { background: rgba(46,204,113,0.25); color: var(--green); }
-    .status-cancelled { background: rgba(229,28,28,0.15); color: var(--accent); }
+    .status-cancelled { background: rgba(46,125,50,0.15); color: var(--accent); }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -111,7 +111,7 @@
     .btn-sm { padding: 6px 12px; font-size: 12px; border-radius: 6px; }
     .btn-outline { border: 1px solid var(--border); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-    .btn-danger { background: rgba(229,28,28,0.15); color: var(--accent); }
+    .btn-danger { background: rgba(46,125,50,0.15); color: var(--accent); }
     .btn-danger:hover { background: var(--accent); color: white; }
 
     /* Modal */
