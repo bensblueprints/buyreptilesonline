@@ -87,7 +87,8 @@ async function initDB() {
       slug TEXT UNIQUE NOT NULL,
       description TEXT,
       image TEXT,
-      sort_order INTEGER DEFAULT 0
+      sort_order INTEGER DEFAULT 0,
+      seo_content TEXT
     );
     CREATE TABLE IF NOT EXISTS products (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -173,6 +174,9 @@ async function initDB() {
   } catch(e) {}
   try {
     db.exec("ALTER TABLE orders ADD COLUMN tracking_number TEXT");
+  } catch(e) {}
+  try {
+    db.exec("ALTER TABLE categories ADD COLUMN seo_content TEXT");
   } catch(e) {}
   try {
     db.exec("ALTER TABLE orders ADD COLUMN label_url TEXT");

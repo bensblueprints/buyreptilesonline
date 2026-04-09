@@ -2,7 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/categories', (req, res) => {
-  res.json(req.db.prepare('SELECT * FROM categories ORDER BY sort_order').all());
+  res.json(req.db.prepare('SELECT id, name, slug, description, image, sort_order FROM categories ORDER BY sort_order').all());
+});
+
+router.get('/categories/:slug', (req, res) => {
+  const cat = req.db.prepare('SELECT * FROM categories WHERE slug = ?').get(req.params.slug);
+  if (!cat) return res.status(404).json({ error: 'Category not found' });
+  res.json(cat);
 });
 
 router.get('/products', (req, res) => {

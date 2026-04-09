@@ -19,7 +19,21 @@ const categoryIcons = {
   'geckos': 'fa-frog',
   'isopods': 'fa-bug',
   'feeders': 'fa-drumstick-bite',
-  'supplies': 'fa-box-open'
+  'supplies': 'fa-box-open',
+  'turtles': 'fa-turtle',
+  'tortoises': 'fa-shield-alt',
+  'chameleons': 'fa-eye',
+  'frogs-toads': 'fa-frog',
+  'salamanders-newts': 'fa-water',
+  'monitors-tegus': 'fa-dragon',
+  'bearded-dragons': 'fa-dragon',
+  'tarantulas-spiders': 'fa-spider',
+  'scorpions': 'fa-skull',
+  'insects-invertebrates': 'fa-bug',
+  'agamas-water-dragons': 'fa-dragon',
+  'skinks': 'fa-paw',
+  'uromastyx': 'fa-sun',
+  'other-lizards-iguanas': 'fa-leaf',
 };
 
 // Init
@@ -274,17 +288,20 @@ async function renderShop(params) {
   const search = params?.get('search') || '';
   const sort = params?.get('sort') || '';
 
-  const [categories, products] = await Promise.all([
+  const fetches = [
     fetch('/api/shop/categories').then(r => r.json()),
     fetch(`/api/shop/products?category=${category}&search=${search}&sort=${sort}`).then(r => r.json())
-  ]);
+  ];
+  if (category) fetches.push(fetch(`/api/shop/categories/${category}`).then(r => r.json()).catch(() => null));
+  const [categories, products, catDetail] = await Promise.all(fetches);
 
   const app = document.getElementById('app');
   const activeCategory = categories.find(c => c.slug === category);
+  const seoContent = catDetail?.seo_content || '';
 
   app.innerHTML = `
     <div class="shop-hero">
-      <h1>${activeCategory ? activeCategory.name : search ? `Search: "${search}"` : 'Shop All'}</h1>
+      <h1>${activeCategory ? activeCategory.name + ' for Sale' : search ? `Search: "${search}"` : 'Shop All'}</h1>
       <p>${activeCategory ? activeCategory.description : `${products.length} products available`}</p>
     </div>
     <div class="shop-filters">
@@ -314,6 +331,7 @@ async function renderShop(params) {
         </div>
       `}
     </div>
+    ${seoContent ? `<div class="seo-content">${seoContent}</div>` : ''}
   `;
 
   animateProducts();
