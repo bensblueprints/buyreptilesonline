@@ -59,19 +59,28 @@ const images = [
   [45, 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Crested_gecko_-_1.jpg', 'crested-gecko-diet.jpg'],
 ];
 
-function download(url, dest) {
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+function download(url, dest, retries = 3) {
   return new Promise((resolve, reject) => {
     const file = fs.createWriteStream(dest);
     const proto = url.startsWith('https') ? https : http;
-    proto.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+    proto.get(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' } }, (res) => {
       if (res.statusCode === 301 || res.statusCode === 302) {
         file.close();
         fs.unlinkSync(dest);
-        return download(res.headers.location, dest).then(resolve).catch(reject);
+        return download(res.headers.location, dest, retries).then(resolve).catch(reject);
+      }
+      if (res.statusCode === 429 && retries > 0) {
+        file.close();
+        if (fs.existsSync(dest)) fs.unlinkSync(dest);
+        const wait = (4 - retries) * 5000;
+        process.stdout.write(` rate limited, waiting ${wait/1000}s...`);
+        return sleep(wait).then(() => download(url, dest, retries - 1)).then(resolve).catch(reject);
       }
       if (res.statusCode !== 200) {
         file.close();
-        fs.unlinkSync(dest);
+        if (fs.existsSync(dest)) fs.unlinkSync(dest);
         return reject(new Error(`HTTP ${res.statusCode} for ${url}`));
       }
       res.pipe(file);
@@ -102,6 +111,7 @@ async function main() {
           throw new Error('File too small, likely error page');
         }
         console.log(` OK (${(size/1024).toFixed(0)}KB)`);
+        await sleep(2000); // delay between downloads to avoid rate limiting
       } else {
         console.log(`${filename} already exists, skipping`);
       }
