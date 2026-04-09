@@ -70,7 +70,7 @@ async function findImage(name) {
   for (const query of uniqueQueries) {
     const url = await searchWikimedia(query);
     if (url) return url;
-    await sleep(200);
+    await sleep(500);
   }
   return null;
 }
@@ -144,7 +144,7 @@ async function main() {
       failedNames.push(p.name);
       console.log(`error: ${e.message}`);
     }
-    await sleep(300);
+    await sleep(2000);
   }
 
   console.log(`\n========================================`);
