@@ -64,9 +64,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: -1;
 }
 .loader-logo {
-  width: 220px;
-  max-width: 60vw;
-  filter: drop-shadow(0 0 20px rgba(46, 125, 50, 0.4)) drop-shadow(0 4px 24px rgba(0,0,0,0.6));
+  width: 320px;
+  max-width: 75vw;
+  filter: drop-shadow(0 0 24px rgba(46, 125, 50, 0.4)) drop-shadow(0 4px 24px rgba(0,0,0,0.6));
   animation: logoFloat 2.5s ease-in-out infinite;
 }
 
@@ -126,8 +126,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .logo { display: flex; align-items: center; }
-.header-logo { height: 42px; width: auto; filter: drop-shadow(0 0 8px rgba(46, 125, 50, 0.3)); transition: filter var(--transition), transform var(--transition); }
-.logo:hover .header-logo { filter: drop-shadow(0 0 14px rgba(46, 125, 50, 0.5)); transform: scale(1.03); }
+.header-logo { height: 55px; width: auto; filter: drop-shadow(0 0 10px rgba(46, 125, 50, 0.35)); transition: filter var(--transition), transform var(--transition); }
+.logo:hover .header-logo { filter: drop-shadow(0 0 16px rgba(46, 125, 50, 0.55)); transform: scale(1.03); }
+@media (max-width: 768px) { .header-logo { height: 40px; } }
 
 .nav-links { display: flex; gap: 32px; }
 .nav-link {
@@ -701,7 +702,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 16px;
 }
 .footer-logo-img {
-  height: 60px; width: auto;
+  height: 70px; width: auto;
   margin-bottom: 16px;
   filter: drop-shadow(0 0 10px rgba(46, 125, 50, 0.25));
 }
