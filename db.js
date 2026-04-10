@@ -182,6 +182,9 @@ async function initDB() {
     db.exec("ALTER TABLE orders ADD COLUMN label_url TEXT");
   } catch(e) {}
   try {
+    db.exec("ALTER TABLE products ADD COLUMN seo_content TEXT");
+  } catch(e) {}
+  try {
     db.exec("ALTER TABLE products ADD COLUMN cost_price REAL");
   } catch(e) {}
   try {

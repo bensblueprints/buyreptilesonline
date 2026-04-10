@@ -437,6 +437,20 @@ async function renderProduct(slug) {
           </div>
         </div>
 
+        ${p.seo_content ? `
+          <div class="product-seo-content">
+            <div class="seo-tabs">
+              <button class="seo-tab active" onclick="switchSeoTab(this, 'overview')">Overview</button>
+              <button class="seo-tab" onclick="switchSeoTab(this, 'habitat')">Habitat Setup</button>
+              <button class="seo-tab" onclick="switchSeoTab(this, 'diet')">Diet & Feeding</button>
+              <button class="seo-tab" onclick="switchSeoTab(this, 'temperament')">Temperament</button>
+              <button class="seo-tab" onclick="switchSeoTab(this, 'handling')">Handling</button>
+              <button class="seo-tab" onclick="switchSeoTab(this, 'health')">Health</button>
+            </div>
+            <div class="seo-tab-content">${p.seo_content}</div>
+          </div>
+        ` : ''}
+
         ${related.length ? `
           <div style="margin-top: 80px;">
             <div class="section-header">
@@ -1005,6 +1019,14 @@ function animateProducts() {
       scrollTrigger: { trigger: card, start: 'top 90%' },
       y: 40, opacity: 0, duration: 0.5, delay: i * 0.06
     });
+  });
+}
+
+function switchSeoTab(btn, section) {
+  document.querySelectorAll('.seo-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.seo-section').forEach(s => {
+    s.style.display = s.dataset.section === section ? 'block' : 'none';
   });
 }
 

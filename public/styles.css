@@ -835,6 +835,102 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .seo-content th { background: #222; color: #fff; font-weight: 600; }
 
+/* Product SEO Content Tabs */
+.product-seo-content {
+  margin-top: 60px;
+  border-top: 1px solid var(--border);
+  padding-top: 40px;
+}
+.seo-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 32px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.seo-tab {
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.seo-tab:hover { color: var(--text); }
+.seo-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.seo-tab-content {
+  max-width: 900px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-size: 15px;
+}
+.seo-tab-content h2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--text);
+  margin: 0 0 16px;
+}
+.seo-tab-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 32px 0 12px;
+}
+.seo-tab-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 24px 0 8px;
+}
+.seo-tab-content p { margin: 0 0 16px; }
+.seo-tab-content ul, .seo-tab-content ol {
+  margin: 0 0 16px;
+  padding-left: 24px;
+}
+.seo-tab-content li { margin-bottom: 6px; }
+.seo-tab-content strong { color: var(--text); }
+.seo-tab-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+}
+.seo-tab-content th, .seo-tab-content td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  text-align: left;
+  font-size: 14px;
+}
+.seo-tab-content th { background: var(--bg-elevated); color: var(--text); font-weight: 600; }
+.seo-tab-content .care-tip {
+  background: rgba(46, 125, 50, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  margin: 16px 0 24px;
+  border-radius: 0 8px 8px 0;
+}
+.seo-tab-content .warning-tip {
+  background: rgba(241, 196, 15, 0.08);
+  border-left: 3px solid #f1c40f;
+  padding: 16px 20px;
+  margin: 16px 0 24px;
+  border-radius: 0 8px 8px 0;
+}
+.seo-section { display: none; }
+.seo-section[data-section="overview"] { display: block; }
+@media (max-width: 768px) {
+  .seo-tabs { gap: 0; }
+  .seo-tab { padding: 10px 14px; font-size: 12px; }
+}
+
 /* Policy & Blog Pages */
 .policy-page {
   max-width: 900px;
