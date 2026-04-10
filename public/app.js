@@ -458,6 +458,12 @@ async function renderProduct(slug) {
           </div>
         ` : ''}
 
+        ${p.blog_content ? `
+          <div class="product-blog-content">
+            ${p.blog_content}
+          </div>
+        ` : ''}
+
         ${related.length ? `
           <div style="margin-top: 80px;">
             <div class="section-header">

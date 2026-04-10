@@ -33,9 +33,44 @@
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="/" class="nav-link active" data-link>Home</a>
-        <a href="/shop" class="nav-link" data-link>Shop</a>
-        <a href="/shop?category=snakes" class="nav-link" data-link>Snakes</a>
-        <a href="/shop?category=geckos" class="nav-link" data-link>Geckos</a>
+        <div class="nav-dropdown">
+          <a href="/shop" class="nav-link" data-link>Shop <i class="fas fa-chevron-down" style="font-size:10px;margin-left:4px"></i></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <div class="dropdown-col">
+                <div class="dropdown-heading">Snakes</div>
+                <a href="/shop?category=snakes" data-link>All Snakes <span class="dropdown-count">124</span></a>
+                <a href="/shop?search=ball+python" data-link>Ball Pythons</a>
+                <a href="/shop?search=boa" data-link>Boas</a>
+                <a href="/shop?search=corn+snake" data-link>Corn Snakes</a>
+                <a href="/shop?search=king+snake" data-link>King Snakes</a>
+                <a href="/shop?search=hognose" data-link>Hognose Snakes</a>
+                <a href="/shop?search=milk+snake" data-link>Milk Snakes</a>
+                <a href="/shop?search=python" data-link>Pythons</a>
+              </div>
+              <div class="dropdown-col">
+                <div class="dropdown-heading">Lizards & Geckos</div>
+                <a href="/shop?category=geckos" data-link>Geckos <span class="dropdown-count">22</span></a>
+                <a href="/shop?category=lizards" data-link>Lizards <span class="dropdown-count">2</span></a>
+                <a href="/shop?category=chameleons" data-link>Chameleons <span class="dropdown-count">2</span></a>
+                <a href="/shop?category=skinks" data-link>Skinks <span class="dropdown-count">4</span></a>
+                <a href="/shop?category=other-reptiles" data-link>Other Reptiles <span class="dropdown-count">19</span></a>
+              </div>
+              <div class="dropdown-col">
+                <div class="dropdown-heading">More Animals</div>
+                <a href="/shop?category=frogs-amphibians" data-link>Frogs & Amphibians <span class="dropdown-count">10</span></a>
+                <a href="/shop?category=turtles-tortoises" data-link>Turtles & Tortoises <span class="dropdown-count">10</span></a>
+                <a href="/shop?category=tarantulas-invertebrates" data-link>Tarantulas & Invertebrates <span class="dropdown-count">44</span></a>
+              </div>
+              <div class="dropdown-col dropdown-featured">
+                <div class="dropdown-heading">Quick Links</div>
+                <a href="/shop" data-link><i class="fas fa-th"></i> Shop All</a>
+                <a href="/shop?sort=price_asc" data-link><i class="fas fa-tag"></i> Lowest Price</a>
+                <a href="/contact" data-link><i class="fas fa-headset"></i> Expert Help</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="/contact" class="nav-link" data-link>Contact</a>
         <a href="/blog" class="nav-link" data-link>Blog</a>
       </nav>
@@ -61,11 +96,20 @@
     <div class="mobile-nav-inner">
       <a href="/" data-link onclick="closeMobile()">Home</a>
       <a href="/shop" data-link onclick="closeMobile()">Shop All</a>
-      <a href="/shop?category=snakes" data-link onclick="closeMobile()">Snakes</a>
+      <div class="mobile-nav-label">Snakes</div>
+      <a href="/shop?category=snakes" data-link onclick="closeMobile()">All Snakes</a>
+      <a href="/shop?search=ball+python" data-link onclick="closeMobile()">Ball Pythons</a>
+      <a href="/shop?search=boa" data-link onclick="closeMobile()">Boas</a>
+      <a href="/shop?search=hognose" data-link onclick="closeMobile()">Hognose</a>
+      <div class="mobile-nav-label">Lizards & Geckos</div>
       <a href="/shop?category=geckos" data-link onclick="closeMobile()">Geckos</a>
-      <a href="/shop?category=isopods" data-link onclick="closeMobile()">Isopods</a>
-      <a href="/shop?category=feeders" data-link onclick="closeMobile()">Feeders</a>
-      <a href="/shop?category=supplies" data-link onclick="closeMobile()">Supplies</a>
+      <a href="/shop?category=chameleons" data-link onclick="closeMobile()">Chameleons</a>
+      <a href="/shop?category=skinks" data-link onclick="closeMobile()">Skinks</a>
+      <a href="/shop?category=other-reptiles" data-link onclick="closeMobile()">Other Reptiles</a>
+      <div class="mobile-nav-label">More</div>
+      <a href="/shop?category=frogs-amphibians" data-link onclick="closeMobile()">Frogs & Amphibians</a>
+      <a href="/shop?category=turtles-tortoises" data-link onclick="closeMobile()">Turtles & Tortoises</a>
+      <a href="/shop?category=tarantulas-invertebrates" data-link onclick="closeMobile()">Tarantulas & Invertebrates</a>
       <a href="/cart" data-link onclick="closeMobile()">Cart</a>
       <a href="/contact" data-link onclick="closeMobile()">Contact</a>
       <a href="/blog" data-link onclick="closeMobile()">Blog</a>

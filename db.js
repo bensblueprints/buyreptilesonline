@@ -188,6 +188,9 @@ async function initDB() {
     db.exec("ALTER TABLE products ADD COLUMN scientific_name TEXT");
   } catch(e) {}
   try {
+    db.exec("ALTER TABLE products ADD COLUMN blog_content TEXT");
+  } catch(e) {}
+  try {
     db.exec("ALTER TABLE products ADD COLUMN cost_price REAL");
   } catch(e) {}
   try {

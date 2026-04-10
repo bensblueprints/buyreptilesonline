@@ -435,8 +435,12 @@
               ${product?.image ? `<input type="hidden" name="existing_image" value="${product.image}"><img src="${product.image}" style="width:80px;height:80px;border-radius:8px;object-fit:cover;margin-top:8px;">` : ''}
             </div>
             <div class="form-group">
-              <label>SEO Content (HTML) <span style="font-size:11px;color:var(--dim);font-weight:400;">— Care guide, habitat, diet, handling info shown on product page</span></label>
-              <textarea name="seo_content" style="min-height:300px;font-family:monospace;font-size:12px;">${product?.seo_content || ''}</textarea>
+              <label>SEO Content (HTML) <span style="font-size:11px;color:var(--dim);font-weight:400;">— Care guide tabs: Overview, Habitat, Diet, Temperament, Handling, Health</span></label>
+              <textarea name="seo_content" style="min-height:250px;font-family:monospace;font-size:12px;">${product?.seo_content || ''}</textarea>
+            </div>
+            <div class="form-group">
+              <label>Blog Content (HTML) <span style="font-size:11px;color:var(--dim);font-weight:400;">— 1500+ word SEO article shown below product info</span></label>
+              <textarea name="blog_content" style="min-height:250px;font-family:monospace;font-size:12px;">${product?.blog_content || ''}</textarea>
             </div>
           </div>
           <div class="modal-footer">

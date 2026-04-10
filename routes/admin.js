@@ -64,13 +64,13 @@ router.get('/products/:id', requireAdmin, (req, res) => {
 });
 
 router.post('/products', requireAdmin, upload.single('image'), (req, res) => {
-  const { name, scientific_name, description, seo_content, price, compare_price, cost_price, supplier, category_id, stock, featured, active, sex, age, morph, weight } = req.body;
+  const { name, scientific_name, description, seo_content, blog_content, price, compare_price, cost_price, supplier, category_id, stock, featured, active, sex, age, morph, weight } = req.body;
   const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   const image = req.file ? '/uploads/' + req.file.filename : null;
   const result = req.db.prepare(`
-    INSERT INTO products (name, scientific_name, slug, description, seo_content, price, compare_price, cost_price, supplier, category_id, image, stock, featured, active, sex, age, morph, weight)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).run(name, scientific_name || null, slug, description, seo_content || null, parseFloat(price), compare_price ? parseFloat(compare_price) : null,
+    INSERT INTO products (name, scientific_name, slug, description, seo_content, blog_content, price, compare_price, cost_price, supplier, category_id, image, stock, featured, active, sex, age, morph, weight)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).run(name, scientific_name || null, slug, description, seo_content || null, blog_content || null, parseFloat(price), compare_price ? parseFloat(compare_price) : null,
     cost_price ? parseFloat(cost_price) : null, supplier || null,
     parseInt(category_id) || null, image, parseInt(stock) || 0, featured === 'true' || featured === '1' ? 1 : 0,
     active === 'false' || active === '0' ? 0 : 1, sex || null, age || null, morph || null, weight || null);
@@ -78,14 +78,14 @@ router.post('/products', requireAdmin, upload.single('image'), (req, res) => {
 });
 
 router.put('/products/:id', requireAdmin, upload.single('image'), (req, res) => {
-  const { name, scientific_name, description, seo_content, price, compare_price, cost_price, supplier, category_id, stock, featured, active, sex, age, morph, weight } = req.body;
+  const { name, scientific_name, description, seo_content, blog_content, price, compare_price, cost_price, supplier, category_id, stock, featured, active, sex, age, morph, weight } = req.body;
   const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   let image = req.body.existing_image || null;
   if (req.file) image = '/uploads/' + req.file.filename;
   req.db.prepare(`
-    UPDATE products SET name=?, scientific_name=?, slug=?, description=?, seo_content=?, price=?, compare_price=?, cost_price=?, supplier=?, category_id=?, image=?, stock=?, featured=?, active=?, sex=?, age=?, morph=?, weight=?
+    UPDATE products SET name=?, scientific_name=?, slug=?, description=?, seo_content=?, blog_content=?, price=?, compare_price=?, cost_price=?, supplier=?, category_id=?, image=?, stock=?, featured=?, active=?, sex=?, age=?, morph=?, weight=?
     WHERE id=?
-  `).run(name, scientific_name || null, slug, description, seo_content || null, parseFloat(price), compare_price ? parseFloat(compare_price) : null,
+  `).run(name, scientific_name || null, slug, description, seo_content || null, blog_content || null, parseFloat(price), compare_price ? parseFloat(compare_price) : null,
     cost_price ? parseFloat(cost_price) : null, supplier || null,
     parseInt(category_id) || null, image, parseInt(stock) || 0, featured === 'true' || featured === '1' ? 1 : 0,
     active === 'false' || active === '0' ? 0 : 1, sex || null, age || null, morph || null, weight || null, parseInt(req.params.id));
