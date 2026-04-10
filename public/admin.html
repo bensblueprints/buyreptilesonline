@@ -309,14 +309,17 @@
         </div>
         <div class="table-card">
           <table>
-            <thead><tr><th></th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead>
+            <thead><tr><th></th><th>Name</th><th>Category</th><th>Cost</th><th>Price</th><th>Markup</th><th>Supplier</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead>
             <tbody>
               ${products.map(p => `
                 <tr>
                   <td><div class="product-thumb">${p.image ? `<img src="${p.image}">` : '<i class="fas fa-image"></i>'}</div></td>
                   <td><strong>${p.name}</strong>${p.morph ? `<br><span style="font-size:12px;color:var(--dim);">${p.morph}</span>` : ''}</td>
                   <td><span style="font-size:13px;color:var(--dim);">${p.category_name || '-'}</span></td>
+                  <td>${p.cost_price ? `<span style="color:var(--dim);">$${p.cost_price.toFixed(2)}</span>` : '<span style="color:var(--muted);">-</span>'}</td>
                   <td>$${p.price.toFixed(2)}${p.compare_price ? `<br><span style="font-size:11px;color:var(--muted);text-decoration:line-through;">$${p.compare_price.toFixed(2)}</span>` : ''}</td>
+                  <td>${p.cost_price ? `<span style="${((p.price - p.cost_price) / p.cost_price * 100) >= 100 ? 'color:var(--green)' : 'color:var(--yellow)'}">${((p.price - p.cost_price) / p.cost_price * 100).toFixed(0)}%</span>` : '-'}</td>
+                  <td><span style="font-size:12px;color:var(--dim);">${p.supplier || '-'}</span></td>
                   <td>${p.stock <= 0 ? '<span style="color:var(--accent);">0</span>' : p.stock <= 3 ? `<span style="color:var(--yellow);">${p.stock}</span>` : p.stock}</td>
                   <td>${p.active ? '<span style="color:var(--green);">Active</span>' : '<span style="color:var(--muted);">Inactive</span>'}</td>
                   <td>
@@ -346,7 +349,17 @@
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label>Price</label>
+                <label>Cost Price (Wholesale)</label>
+                <input type="number" name="cost_price" step="0.01" value="${product?.cost_price || ''}">
+              </div>
+              <div class="form-group">
+                <label>Supplier</label>
+                <input type="text" name="supplier" value="${product?.supplier || ''}">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Retail Price</label>
                 <input type="number" name="price" step="0.01" required value="${product ? product.price : ''}">
               </div>
               <div class="form-group">

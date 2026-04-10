@@ -64,27 +64,29 @@ router.get('/products/:id', requireAdmin, (req, res) => {
 });
 
 router.post('/products', requireAdmin, upload.single('image'), (req, res) => {
-  const { name, description, price, compare_price, category_id, stock, featured, active, sex, age, morph, weight } = req.body;
+  const { name, description, price, compare_price, cost_price, supplier, category_id, stock, featured, active, sex, age, morph, weight } = req.body;
   const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   const image = req.file ? '/uploads/' + req.file.filename : null;
   const result = req.db.prepare(`
-    INSERT INTO products (name, slug, description, price, compare_price, category_id, image, stock, featured, active, sex, age, morph, weight)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO products (name, slug, description, price, compare_price, cost_price, supplier, category_id, image, stock, featured, active, sex, age, morph, weight)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).run(name, slug, description, parseFloat(price), compare_price ? parseFloat(compare_price) : null,
+    cost_price ? parseFloat(cost_price) : null, supplier || null,
     parseInt(category_id) || null, image, parseInt(stock) || 0, featured === 'true' || featured === '1' ? 1 : 0,
     active === 'false' || active === '0' ? 0 : 1, sex || null, age || null, morph || null, weight || null);
   res.json({ success: true, id: result.lastInsertRowid });
 });
 
 router.put('/products/:id', requireAdmin, upload.single('image'), (req, res) => {
-  const { name, description, price, compare_price, category_id, stock, featured, active, sex, age, morph, weight } = req.body;
+  const { name, description, price, compare_price, cost_price, supplier, category_id, stock, featured, active, sex, age, morph, weight } = req.body;
   const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   let image = req.body.existing_image || null;
   if (req.file) image = '/uploads/' + req.file.filename;
   req.db.prepare(`
-    UPDATE products SET name=?, slug=?, description=?, price=?, compare_price=?, category_id=?, image=?, stock=?, featured=?, active=?, sex=?, age=?, morph=?, weight=?
+    UPDATE products SET name=?, slug=?, description=?, price=?, compare_price=?, cost_price=?, supplier=?, category_id=?, image=?, stock=?, featured=?, active=?, sex=?, age=?, morph=?, weight=?
     WHERE id=?
   `).run(name, slug, description, parseFloat(price), compare_price ? parseFloat(compare_price) : null,
+    cost_price ? parseFloat(cost_price) : null, supplier || null,
     parseInt(category_id) || null, image, parseInt(stock) || 0, featured === 'true' || featured === '1' ? 1 : 0,
     active === 'false' || active === '0' ? 0 : 1, sex || null, age || null, morph || null, weight || null, parseInt(req.params.id));
   res.json({ success: true });
