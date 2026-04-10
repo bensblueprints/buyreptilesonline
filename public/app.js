@@ -300,6 +300,7 @@ function productCard(p) {
       <div class="product-info">
         <div class="product-category">${p.category_name || ''}</div>
         <h3 class="product-name">${p.name}</h3>
+        ${p.scientific_name ? `<div class="product-sci-name"><em>${p.scientific_name}</em></div>` : ''}
         <div class="product-meta">
           ${p.sex ? `<span><i class="fas fa-venus-mars"></i> ${p.sex}</span>` : ''}
           ${p.morph ? `<span><i class="fas fa-palette"></i> ${p.morph}</span>` : ''}
@@ -338,6 +339,11 @@ async function renderShop(params) {
     <div class="shop-hero">
       <h1>${activeCategory ? 'Buy ' + activeCategory.name + ' Online' : search ? `Search: "${search}"` : 'Buy Reptiles Online — Shop All'}</h1>
       <p>${activeCategory ? activeCategory.description + '. Captive bred with live arrival guarantee. Shipped overnight to your door.' : `${products.length} products available — captive bred, ethically sourced, shipped overnight.`}</p>
+      <div class="shop-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="shopSearchInput" placeholder="Search by name, species, or scientific name..." value="${search}" onkeydown="if(event.key==='Enter'){const v=this.value.trim();if(v)navigate('/shop?search='+encodeURIComponent(v));else navigate('/shop')}">
+        ${search ? '<button class="shop-search-clear" onclick="navigate(\'/shop\')"><i class="fas fa-times"></i></button>' : ''}
+      </div>
     </div>
     <div class="shop-filters">
       <div class="filter-tabs">
@@ -400,6 +406,7 @@ async function renderProduct(slug) {
               <span>${p.name}</span>
             </div>
             <h1 class="detail-title">${p.name}</h1>
+            ${p.scientific_name ? `<div class="detail-sci-name"><em>${p.scientific_name}</em></div>` : ''}
             <div class="detail-price">
               $${p.price.toFixed(2)}
               ${hasSale ? `<span class="detail-compare">$${p.compare_price.toFixed(2)}</span><span class="detail-save">Save $${savings}</span>` : ''}

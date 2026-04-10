@@ -347,6 +347,10 @@
               <label>Name</label>
               <input type="text" name="name" required value="${product ? product.name : ''}">
             </div>
+            <div class="form-group">
+              <label>Scientific Name</label>
+              <input type="text" name="scientific_name" placeholder="e.g. Agalychnis callidryas" value="${product?.scientific_name || ''}">
+            </div>
             <div class="form-row">
               <div class="form-group">
                 <label>Cost Price (Wholesale)</label>

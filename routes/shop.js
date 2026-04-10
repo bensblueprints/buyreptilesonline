@@ -35,9 +35,9 @@ router.get('/products', (req, res) => {
   }
 
   if (search) {
-    query += ' AND (p.name LIKE ? OR p.description LIKE ? OR p.morph LIKE ?)';
+    query += ' AND (p.name LIKE ? OR p.description LIKE ? OR p.morph LIKE ? OR p.scientific_name LIKE ? OR c.name LIKE ?)';
     const s = `%${search}%`;
-    params.push(s, s, s);
+    params.push(s, s, s, s, s);
   }
 
   if (featured === '1') {
